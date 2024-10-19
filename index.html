@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+    <div class="dashboard">
+        <h1>Beyond the Numbers: Mental Health Shaping Factors</h1>
+
+        <!-- Controls: Dropdown, Year Slider, GDP Slider -->
+        <div class="controls-container">
+            <label for="issueSelect">Select Mental Health Issue:</label>
+            <select id="issueSelect">
+                <option value="Schizophrenia">Schizophrenia</option>
+                <option value="Depression">Depression</option>
+                <option value="Bipolar">Bipolar</option>
+                <option value="Anxiety">Anxiety</option>
+            </select>
+    
+            <label for="year-slider">Select Year: <span id="year-value"></span></label>
+            <input type="range" id="year-slider" min="2002" max="2014" value="2014">
+    
+            <label for="gdpSlider">Filter by GDP: <span id="gdpValue"></span></label>
+            <input type="range" id="gdpSlider" min="0" max="90000" step="1000">
+        </div>
+    
+        <!-- Scatterplot -->
+        <div class="chart-container scatter-histogram">
+            <h2>Mental Health Compared with GDP</h2>
+            <div id="chart"></div>
+            <div id="tooltip"></div>
+        </div>
+    
+        <!-- Histogram -->
+        <div class="chart-container histogram-radial">
+            <h2>Alcohol Consumption vs GDP per Capita</h2>
+            <div id="histogram"></div>
+            <div id="tooltip"></div>
+        </div>
+    
+        <!-- Radial Chart -->
+        <div class="chart-container bar-placeholder">
+            <h2>Mental Health Issues by Age Group</h2>
+            <div id="radial-chart"></div>
+            <div id="tooltip"></div>
+        </div>
+    </div>    
+</body>
+
+<script>
+    document.getElementById('gdpSlider').addEventListener('input', function () {
+        const selectedGDP = this.value;
+        const selectedIssue = document.getElementById('issueSelect').value;
+        const selectedYear = document.getElementById('year-slider').value;
+
+        // Update the scatter plot
+        if (typeof updatePlot === "function") {
+            updatePlot();
+        }
+
+        // Update the radial chart
+        if (typeof updateRadialChart === "function") {
+            updateRadialChart(selectedYear, selectedIssue, selectedGDP);
+        }
+
+        // Update the displayed GDP value
+        document.getElementById('gdpValue').textContent = selectedGDP;
+    });
+</script>
+
+<script>
+    document.getElementById('issueSelect').addEventListener('change', function () {
+        const selectedIssue = this.value;
+        const selectedYear = document.getElementById('year-slider').value;
+        const selectedGDP = document.getElementById('gdpSlider').value;
+
+        // Update GDP scatter plot
+        if (typeof updatePlot === "function") {
+            updatePlot();
+        }
+
+        // Update GDP limits
+        if (typeof updateGDPLimits === "function") {
+            updateGDPLimits();
+        }
+
+        // Update the radial chart
+        if (typeof updateRadialChart === "function") {
+            updateRadialChart(selectedYear, selectedIssue, selectedGDP);
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('year-slider').addEventListener('input', function () {
+        const selectedYear = this.value;
+        const selectedIssue = document.getElementById('issueSelect').value;
+        const selectedGDP = document.getElementById('gdpSlider').value;
+
+        // Call the histogram update function
+        if (typeof updateChart === "function") {
+            updateChart(selectedYear);
+        }
+
+        // Call the scatter plot update function
+        if (typeof updatePlot === "function") {
+            updatePlot();
+        }
+
+        // Call the radial chart update function
+        if (typeof updateRadialChart === "function") {
+            updateRadialChart(selectedYear, selectedIssue, selectedGDP);
+        }
+
+        // Update the displayed year value
+        document.getElementById('year-value').textContent = selectedYear;
+    });
+</script>
+
+</html>

@@ -1,0 +1,124 @@
+body {
+    font-family: 'Lucida Sans Regular', sans-serif;
+    background-image: url('/img/background.jpg');
+    color: #4a4a4a;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #9d78d2;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.scatter-histogram {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.controls-container {
+    width: 75%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.histogram-radial, 
+.bar-placeholder {
+    width: 47%;
+    margin: 20px;
+}
+
+.chart-container {
+    min-height: 300px;
+}
+
+.bar {
+    fill: #9370DB;
+    stroke: #333333;
+    stroke-width: 1px;
+}
+
+.bar:hover {
+    fill: #6746aa;
+}
+
+.bar.selected {
+    fill: #6746aa;
+}
+
+.axis-label {
+    font-size: 12px;
+}
+
+#tooltip {
+    position: absolute;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#issueSelect {
+    padding: 5px;
+    border: 1px solid #9d78d2;
+    border-radius: 5px;
+    background-color: #f3e8ff;
+    color: #4a4a4a;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.3s;
+    margin: 5px 5px;
+}
+
+#issueSelect:hover {
+    border-color: #6746aa;
+}
+
+#issueSelect:focus {
+    border-color: #4c347a;
+    box-shadow: 0 0 5px rgba(103, 70, 170, 0.5);
+}
+
+
+.radial-bar {
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.radial-bar:hover {
+    opacity: 1;
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
+.age-group-label {
+    font-size: 12px;
+    fill: #666;
+    font-weight: 500;
+}
+
+.value-label {
+    font-size: 12px;
+    fill: white;
+    font-weight: bold;
+}
+
+#radial-chart {
+    margin: 20px auto;
+    display: block;
+}
+
+.radial-title {
+    font-size: 16px;
+    fill: #333;
+}
