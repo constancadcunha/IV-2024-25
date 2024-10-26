@@ -53,7 +53,7 @@ h1 {
 }
 
 .axis-label {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 #tooltip {
@@ -68,27 +68,26 @@ h1 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#issueSelect {
+#issueSelect, #continentSelect, #countrySelect {
     padding: 5px;
     border: 1px solid #9d78d2;
     border-radius: 5px;
     background-color: #f3e8ff;
     color: #4a4a4a;
-    font-size: 12px;
+    font-size: 15px;
     outline: none;
     transition: border-color 0.3s;
     margin: 5px 5px;
 }
 
-#issueSelect:hover {
+#issueSelect:hover, #continentSelect:hover, #countrySelect:hover {
     border-color: #6746aa;
 }
 
-#issueSelect:focus {
+#issueSelect:focus, #continentSelect:focus, #countrySelect:focus {
     border-color: #4c347a;
     box-shadow: 0 0 5px rgba(103, 70, 170, 0.5);
 }
-
 
 .radial-bar {
     opacity: 0.8;
@@ -121,4 +120,12 @@ h1 {
 .radial-title {
     font-size: 16px;
     fill: #333;
+}
+
+.background-rect {
+    cursor: default;
+}
+
+.highlight-line {
+    stroke: #150235;
 }
